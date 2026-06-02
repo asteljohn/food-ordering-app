@@ -1,4 +1,6 @@
+import psutil
 import bcrypt
+import logging
 from flask import Flask, render_template, request, redirect, session
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -6,6 +8,12 @@ import sqlite3
 
 app = Flask(__name__)
 app.secret_key = "foodsecretkey"
+
+logging.basicConfig(
+    filename='foodapp.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
 limiter = Limiter(
     get_remote_address,
@@ -93,6 +101,11 @@ def login():
                 ):
                     session['user_id'] = user['id']
                     session['name'] = user['name']
+
+                    logging.info(
+                        f"User login successful: {email}"
+                    )
+
                     return redirect('/user_dashboard')
 
             # Old plain-text users
@@ -100,10 +113,19 @@ def login():
 
                 session['user_id'] = user['id']
                 session['name'] = user['name']
+
+                logging.info(
+                    f"User login successful: {email}"
+                )
+
                 return redirect('/user_dashboard')
 
-    return render_template("login.html")
+        # Failed login
+        logging.warning(
+            f"Failed login attempt: {email}"
+        )
 
+    return render_template("login.html")
 
 # USER DASHBOARD
 @app.route('/user_dashboard')
@@ -367,6 +389,12 @@ def order_food(id):
 
         conn.commit()
 
+        logging.info(
+            f"Order placed by {session['name']} - "
+            f"Food: {food['food_name']} - "
+            f"Price: {food['price']}"
+        )
+
         print("Order placed successfully")
 
     return redirect('/user_dashboard')
@@ -396,6 +424,19 @@ def logout():
     session.clear()
 
     return redirect('/')
+
+# HEALTH CHECK
+@app.route('/health')
+def health():
+    return "OK", 200
+
+@app.route('/metrics')
+def metrics():
+    return {
+        "cpu_percent": psutil.cpu_percent(),
+        "memory_percent": psutil.virtual_memory().percent,
+        "disk_percent": psutil.disk_usage('/').percent
+    }
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
