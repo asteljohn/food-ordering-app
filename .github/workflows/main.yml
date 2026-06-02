@@ -1,0 +1,29 @@
+name: Food Ordering App CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: |
+          pip install flask
+          pip install bcrypt
+          pip install flask-limiter
+
+      - name: Syntax Check
+        run: |
+          python -m py_compile app.py
