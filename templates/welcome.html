@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodHub</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    height:100vh;
+    background:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600') no-repeat center center/cover;
+}
+
+.overlay{
+    background:rgba(0,0,0,0.65);
+    width:100%;
+    height:100%;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Admin Login Top Right */
+
+.admin-btn{
+    position:absolute;
+    top:30px;
+    right:40px;
+    text-decoration:none;
+    background:#16a34a;
+    color:white;
+    padding:12px 25px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.admin-btn:hover{
+    background:#15803d;
+}
+
+/* Center Content */
+
+.container{
+    text-align:center;
+    color:white;
+}
+
+.container h1{
+    font-size:60px;
+    margin-bottom:15px;
+}
+
+.container p{
+    font-size:22px;
+    margin-bottom:40px;
+}
+
+/* Login Button */
+
+.user-btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#ff9800;
+    color:white;
+    padding:15px 40px;
+    border-radius:30px;
+    font-size:20px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.user-btn:hover{
+    background:#e68900;
+    transform:scale(1.05);
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="overlay">
+
+    <a href="/admin_login" class="admin-btn">
+        Admin Login
+    </a>
+
+    <div class="container">
+
+        <h1>🍔 BiteBox</h1>
+
+        <p>Fresh Food Delivered To Your Doorstep</p>
+
+        <a href="/login" class="user-btn">
+            Login
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+/* Header */
+
+
+.header{
+    background:#1e293b;
+    color:white;
+    padding:20px;
+    text-align:center;
+    position:relative;
+}
+
+.logout-btn{
+    position:absolute;
+    top:20px;
+    right:30px;
+    text-decoration:none;
+    background:#dc2626;
+    color:white;
+    padding:10px 20px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.logout-btn:hover{
+    background:#b91c1c;
+}
+
+.header h1{
+    font-size:32px;
+}
+
+/* Dashboard */
+
+.container{
+    width:90%;
+    margin:30px auto;
+}
+
+/* Cards */
+
+.cards{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.card{
+    background:white;
+    width:250px;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card h2{
+    color:#16a34a;
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:28px;
+    font-weight:bold;
+}
+
+/* Buttons */
+
+.actions{
+    margin-top:40px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+}
+
+.btn{
+    text-decoration:none;
+    background:#16a34a;
+    color:white;
+    padding:15px 25px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#15803d;
+}
+
+.logout{
+    background:#dc2626;
+}
+
+.logout:hover{
+    background:#b91c1c;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+    <a href="/logout" class="logout-btn">
+        Logout
+    </a>
+
+    <h1>👨‍💼 Restaurant Admin Dashboard</h1>
+</div>
+
+<div class="container">
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>📦 Orders Today</h2>
+            <p>{{ total_orders }}</p>
+        </div>
+
+        <div class="card">
+            <h2>👥 Users</h2>
+            <p>{{ total_users }}</p>
+        </div>
+
+        <div class="card">
+            <h2>🍔 Food Items</h2>
+            <p>{{ total_foods }}</p>
+        </div>
+
+    </div>
+
+    <div class="actions">
+
+        <a href="/add_food" class="btn">➕ Add Food Item</a>
+
+        <a href="/manage_food" class="btn">🍽 Manage Menu</a>
+
+        <a href="/view_orders" class="btn">📋 View Orders</a>
+
+        <a href="/update_order_status" class="btn">🚚 Update Order Status</a>
+
+        <a href="/manage_users" class="btn">👤 Manage Users</a>
+
+
+    </div>
+
+</div>
+
+</body>
+</html>

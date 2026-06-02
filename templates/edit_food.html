@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Food Item</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+.header{
+    background:#1e293b;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.header h1{
+    margin-bottom:10px;
+}
+
+.container{
+    width:450px;
+    margin:50px auto;
+}
+
+.food-card{
+    background:white;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    padding:30px;
+}
+
+.food-card h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#333;
+}
+
+.input-box{
+    width:100%;
+    padding:12px;
+    margin-bottom:20px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.update-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#f59e0b;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.update-btn:hover{
+    background:#d97706;
+}
+
+.back-btn{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    text-decoration:none;
+    color:#555;
+}
+
+.back-btn:hover{
+    color:#16a34a;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>✏ Edit Food Item</h1>
+    <p>Update Food Details</p>
+</div>
+
+<div class="container">
+
+    <div class="food-card">
+
+        <h2>Edit Food</h2>
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="food_name"
+                value="{{ food['food_name'] }}"
+                class="input-box"
+                required
+            >
+
+            <input
+                type="number"
+                name="price"
+                value="{{ food['price'] }}"
+                class="input-box"
+                required
+            >
+
+            <button type="submit" class="update-btn">
+                ✅ Update Food
+            </button>
+
+        </form>
+
+        <a href="/manage_food" class="back-btn">
+            ← Back to Manage Food
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

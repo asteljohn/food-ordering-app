@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Food Item</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+.header{
+    background:#1e293b;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    width:500px;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.container h2{
+    text-align:center;
+    color:#16a34a;
+    margin-bottom:20px;
+}
+
+.input-box{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.btn{
+    width:100%;
+    padding:12px;
+    background:#16a34a;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#15803d;
+}
+
+.back{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    text-decoration:none;
+    color:#555;
+}
+
+.back:hover{
+    color:#16a34a;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🍔 Food Management</h1>
+</div>
+
+<div class="container">
+
+    <h2>Add Food Item</h2>
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="food_name"
+            placeholder="Food Name"
+            class="input-box"
+            required
+        >
+
+        <input
+            type="number"
+            name="price"
+            placeholder="Price"
+            class="input-box"
+            required
+        >
+
+        <button type="submit" class="btn">
+            ➕ Add Food
+        </button>
+
+    </form>
+
+    <a href="/admin_dashboard" class="back">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

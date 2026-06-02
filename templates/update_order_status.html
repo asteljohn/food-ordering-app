@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Order Status</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+.header{
+    background:#1e293b;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.header h1{
+    margin-bottom:10px;
+}
+
+.orders-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:30px;
+    padding:30px;
+}
+
+.order-card{
+    width:320px;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.order-card:hover{
+    transform:translateY(-5px);
+}
+
+.order-info{
+    padding:25px;
+}
+
+.order-info h3{
+    margin-bottom:15px;
+    color:#1e293b;
+}
+
+.order-info p{
+    margin:10px 0;
+    color:#555;
+    font-size:16px;
+}
+
+.price{
+    color:#ff9800;
+    font-size:22px;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+.status{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:20px;
+    background:#facc15;
+    color:black;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.btn-group{
+    margin-top:20px;
+}
+
+.btn{
+    text-decoration:none;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+    margin-right:10px;
+    display:inline-block;
+}
+
+.preparing{
+    background:#3b82f6;
+}
+
+.delivered{
+    background:#22c55e;
+}
+
+.back-btn{
+    display:block;
+    width:220px;
+    margin:20px auto;
+    text-align:center;
+    text-decoration:none;
+    background:#16a34a;
+    color:white;
+    padding:12px;
+    border-radius:10px;
+}
+
+.back-btn:hover{
+    background:#15803d;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="header">
+    <h1>🚚 Update Order Status</h1>
+    <p>Manage Customer Orders</p>
+</div>
+
+<div class="orders-container">
+
+{% for order in orders %}
+
+<div class="order-card">
+
+    <div class="order-info">
+
+        <h3>Order #{{ order['id'] }}</h3>
+
+        <p><strong>User:</strong> {{ order['user_name'] }}</p>
+
+        <p><strong>Food:</strong> {{ order['food_name'] }}</p>
+
+        <div class="price">
+            ₹{{ order['price'] }}
+        </div>
+
+        <span class="status">
+            {{ order['status'] }}
+        </span>
+
+        <div class="btn-group">
+
+            <a href="/change_status/{{ order['id'] }}/Preparing"
+               class="btn preparing">
+               Preparing
+            </a>
+
+            <a href="/change_status/{{ order['id'] }}/Delivered"
+               class="btn delivered">
+               Delivered
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<a href="/admin_dashboard" class="back-btn">
+    ← Back to Dashboard
+</a>
+
+</body>
+</html>
